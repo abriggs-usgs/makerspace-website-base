@@ -1,8 +1,7 @@
 <template>
     <div id="HeaderUSWDSBanner">
         <a class="usa-skipnav" href="#main-content">Skip to main content</a>
-
-        <section class="usa-banner">
+        <div class="usa-banner">
             <div class="usa-accordion">
                 <header class="usa-banner__header">
                     <div class="usa-banner__inner">
@@ -27,28 +26,24 @@
                                 <p>
                                     <strong>The .gov means it’s official.</strong>
                                     <br>
-                                    Federal government websites often end in .gov or .mil. Before sharing sensitive information,
-                                    make sure you’re on a federal government site.
+                                    Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
                                 </p>
                             </div>
                         </div>
                         <div class="usa-banner__guidance tablet:grid-col-6">
-                            <img class="usa-banner__icon usa-media-block__img" src="~uswds/dist/img/icon-https.svg" alt="Dot gov">
-
+                            <img class="usa-banner__icon usa-media-block__img" src="~uswds/dist/img/icon-https.svg" alt="Https">
                             <div class="usa-media-block__body">
                                 <p>
                                     <strong>The site is secure.</strong>
                                     <br>
-                                    The <strong>https://</strong> ensures that you are connecting to the official website and
-                                    that any information you provide is encrypted and transmitted securely.
+                                    The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <div class="usa-overlay"></div>
+        </div>
     </div>
 </template>
 

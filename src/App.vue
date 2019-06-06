@@ -3,7 +3,7 @@
     <HeaderUSWDSBanner></HeaderUSWDSBanner>
     <HeaderUSGS></HeaderUSGS>
     <HeaderUSWDSSelections titleForSelectionHeader="Any Project Name Here"></HeaderUSWDSSelections>
-    <Visualization msg="Another Intuitive and Informative Visualization"/>
+    <Visualization></Visualization>
     <FooterUSGS></FooterUSGS>
   </div>
 </template>
