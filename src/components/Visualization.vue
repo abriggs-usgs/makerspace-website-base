@@ -1,6 +1,7 @@
 <template>
     <div id="visualization">
         <h1>{{ msg }}</h1>
+        <span v-if="loading">Loading...</span>
         <l-map ref="map"
                :zoom="zoom"
                :center="center"
@@ -8,7 +9,6 @@
             <l-tile-layer :url="url"
                           :attribution="attribution"></l-tile-layer>
             <l-geo-json :geojson="geojson"
-                        :options="onEachFeature"
                         :options-style="styleFunction"></l-geo-json>
             <l-marker :lat-lng="marker"></l-marker>
         </l-map>
@@ -18,7 +18,7 @@
 <script>
     import L from 'leaflet';
     import { LMap, LTileLayer, LMarker, LGeoJson } from 'vue2-leaflet';
-    // import statesData from '../geoJson/us-states'; -- can't get this to work, needs hard coded geojson. Says it is an invalid json object. What?!
+    // import statesData from '../geoJson/us-states';
 
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
@@ -40,6 +40,7 @@
         },
         data () {
             return {
+                loading: false,
                 zoom: 5,
                 center: L.latLng(43.092641, -89.532142),
                 url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -100,44 +101,37 @@
                         {"type":"Feature","id":"56","properties":{"name":"Wyoming","density":5.851},"geometry":{"type":"Polygon","coordinates":[[[-109.080842,45.002073],[-105.91517,45.002073],[-104.058488,44.996596],[-104.053011,43.002989],[-104.053011,41.003906],[-105.728954,40.998429],[-107.919731,41.003906],[-109.04798,40.998429],[-111.047063,40.998429],[-111.047063,42.000709],[-111.047063,44.476286],[-111.05254,45.002073],[-109.080842,45.002073]]]}},
                         {"type":"Feature","id":"72","properties":{"name":"Puerto Rico","density":1082 },"geometry":{"type":"Polygon","coordinates":[[[-66.448338,17.984326],[-66.771478,18.006234],[-66.924832,17.929556],[-66.985078,17.973372],[-67.209633,17.956941],[-67.154863,18.19245],[-67.269879,18.362235],[-67.094617,18.515589],[-66.957694,18.488204],[-66.409999,18.488204],[-65.840398,18.433435],[-65.632274,18.367712],[-65.626797,18.203403],[-65.730859,18.186973],[-65.834921,18.017187],[-66.234737,17.929556],[-66.448338,17.984326]]]}}
                     ]},
-
             }
+
         },
         methods: {
             mounted() {
                 setTimeout(function () {
                     window.dispatchEvent(new Event('resize'))
                 }, 250);
+            },
+            getColor(d) {
+                return d > 1000 ? '#800026' :
+                    d > 500  ? '#BD0026' :
+                    d > 200  ? '#E31A1C' :
+                    d > 100  ? '#FC4E2A' :
+                    d > 50   ? '#FD8D3C' :
+                    d > 20   ? '#FEB24C' :
+                    d > 10   ? '#FED976' :
+                                '#FFEDA0';
             }
         },
         computed: {
-            // onEachFeature(feature, layer) {
-            //     layer.on({
-            //         mouseover: highlightFeature,
-            //         mouseout: resetHighlight,
-            //         click: zoomToFeature
-            //     });
-            // },
-            // getColor(d) {
-            //     return d > 1000 ? '#800026' :
-            //         d > 500  ? '#BD0026' :
-            //         d > 200  ? '#E31A1C' :
-            //         d > 100  ? '#FC4E2A' :
-            //         d > 50   ? '#FD8D3C' :
-            //         d > 20   ? '#FEB24C' :
-            //         d > 10   ? '#FED976' :
-            //                     '#FFEDA0';
-            // },
-            // styleFunction(feature) {
-            //     return {
-            //         fillColor: getColor(feature.properties.density),
-            //         weight: 2,
-            //         opacity: 1,
-            //         color: 'white',
-            //         dashArray: '3',
-            //         fillOpacity: 0.7
-            //     }
-            // }
+            styleFunction(feature) {
+                return {
+                    fillColor: this.getColor(20), // can not get feature.properties.density to work !!!!
+                    weight: 2,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7
+                }
+            }
         }
     }
 </script>
