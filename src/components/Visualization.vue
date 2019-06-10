@@ -48,8 +48,6 @@
                                     '   #FFEDA0';
     }
 
-
-
     export default {
         name: 'Visualization',
         props: {
@@ -69,7 +67,6 @@
                 url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                 marker: L.latLng(43.092641, -89.532142),
-                // geojson: data.statesData
                 statesData: {
                     geojson: data.statesData,
                     options: {
