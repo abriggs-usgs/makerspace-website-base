@@ -9,7 +9,6 @@
 
     <nav id="menu"></nav>
     <MglMap id="map"
-        :accessToken="accessToken"
         :container="container"
         :mapStyle="mapStyle"
         :zoom="zoom"
@@ -36,6 +35,7 @@
         MglScaleControl
     } from "vue-mapbox";
     import mapStyles from '../assets/mapStyles/mapStyles';
+    import mapboxgl from "mapbox-gl";
 
     export default {
         components: {
@@ -54,7 +54,6 @@
         },
         data() {
             return {
-                accessToken: 'pk.eyJ1IjoiYWJyaWdncyIsImEiOiJjandrd3J4bmMwcjNpNGFxZ2hoZGE2djR5In0.gKPNdhLzvbzui4aiIwAihA',
                 mapStyle: mapStyles.style,
                 container: 'map',
                 zoom: 4,
@@ -62,7 +61,41 @@
                 maxZoom: 8,
                 center: [-95.7129, 37.0902]
             }
-        }
+        },
+        mounted() {
+            this.mapboxgl = mapboxgl;
+            let toggleableLayerIds = [ 'basemap', 'HRU' ];
+
+            for (let i = 0; i < toggleableLayerIds.length; i++) {
+                let id = toggleableLayerIds[i];
+
+                let link = document.createElement('a');
+                link.href = '#';
+                link.className = 'active';
+                link.textContent = id;
+
+                link.onclick = function (e) {
+                    let clickedLayer = this.textContent;
+console.log('layer clicked: ' + clickedLayer)
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    let visibility = this.mapboxgl.getLayoutProperty(clickedLayer, 'visibility');
+
+                    if (visibility === 'visible') {
+                        this.mapboxgl.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        this.mapboxgl.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+
+                let layers = document.getElementById('menu');
+                layers.appendChild(link);
+            }
+        },
+
     }
 </script>
 
