@@ -16,9 +16,9 @@
         :minZoom="minZoom"
         :maxZoom="maxZoom"
         :center="center"
-        :attributionControl="false"
     >
-      <MglScaleControl position="bottom-right" />
+      <MglScaleControl position="bottom-right"
+      unit="imperial"/>
       <MglNavigationControl position="bottom-right" />
       <MglGeolocateControl position="bottom-right" />
       <MglFullscreenControl position="bottom-right" />
