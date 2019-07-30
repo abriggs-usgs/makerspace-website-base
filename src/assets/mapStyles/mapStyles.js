@@ -17,6 +17,9 @@ export default {
             {
                 "id": "bg",
                 "type": "background",
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "background-color": "rgba(202, 210, 211, 1)"
                 }
@@ -26,6 +29,9 @@ export default {
                 "type": "fill",
                 "source": "basemap",
                 "source-layer": "states",
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "fill-color": "rgba(246, 246, 244, 1)"
                 }
@@ -35,7 +41,9 @@ export default {
                 "type": "fill",
                 "source": "basemap",
                 "source-layer": "neighboringcountry",
-                "layout": {},
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "fill-color": "rgba(246, 246, 244, 1)"
                 }
@@ -45,6 +53,9 @@ export default {
                 type: "fill",
                 source: "HRU",
                 "source-layer": "no_simp_prec5",
+                "layout": {
+                    "visibility": "visible"
+                },
                 paint: {
                     "fill-color": {
                         "property": "SoilMoisture",
@@ -67,6 +78,9 @@ export default {
                 type: "line",
                 source: "HRU",
                 "source-layer": "no_simp_prec5",
+                "layout": {
+                    "visibility": "visible"
+                },
                 paint: {
                     "line-color": {
                         "property": "SoilMoisture",
@@ -89,7 +103,9 @@ export default {
                 "source": "basemap",
                 "source-layer": "USA_Rivers_and_Streams",
                 "minzoom": 5,
-                "layout": {},
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "line-color": "rgba(115, 255, 255, 1)"
                 }
@@ -101,6 +117,9 @@ export default {
                 "source-layer": "counties",
                 "minzoom": 6,
                 "maxzoom": 24,
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "line-color": "rgba(115, 255, 255, 1)"
                 }
@@ -110,7 +129,9 @@ export default {
                 "type": "line",
                 "source": "basemap",
                 "source-layer": "states",
-                "layout": {},
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "line-color": "rgba(115, 255, 255, 1)",
                     "line-dasharray": [
@@ -125,6 +146,9 @@ export default {
                 "source": "basemap",
                 "source-layer": "Cities_and_Towns_NTAD",
                 "minzoom": 6,
+                "layout": {
+                    "visibility": "visible"
+                },
                 "paint": {
                     "circle-radius": 4
                 }
@@ -136,6 +160,7 @@ export default {
                 "source-layer": "Cities_and_Towns_NTAD",
                 "minzoom": 6,
                 "layout": {
+                    "visibility": "visible",
                     "text-field": "{NAME}",
                     "text-font": [
                         "Roboto Regular"

@@ -15,12 +15,22 @@
         :minZoom="minZoom"
         :maxZoom="maxZoom"
         :center="center"
+        @load="onMapLoaded"
     >
-      <MglScaleControl position="bottom-right"
-      unit="imperial"/>
-      <MglNavigationControl position="bottom-right" />
-      <MglGeolocateControl position="bottom-right" />
-      <MglFullscreenControl position="bottom-right" />
+      <MglScaleControl
+          position="bottom-right"
+          unit="imperial"
+      />
+      <MglNavigationControl
+          position="bottom-right"
+          :showCompass="false"
+      />
+      <MglGeolocateControl
+          position="bottom-right"
+      />
+      <MglFullscreenControl
+          position="bottom-right"
+      />
     </MglMap>
 
   </div>
@@ -35,7 +45,7 @@
         MglScaleControl
     } from "vue-mapbox";
     import mapStyles from '../assets/mapStyles/mapStyles';
-    import mapboxgl from "mapbox-gl";
+
 
     export default {
         components: {
@@ -62,40 +72,47 @@
                 center: [-95.7129, 37.0902]
             }
         },
-        mounted() {
-            this.mapboxgl = mapboxgl;
-            let toggleableLayerIds = [ 'basemap', 'HRU' ];
+        created() {
 
-            for (let i = 0; i < toggleableLayerIds.length; i++) {
-                let id = toggleableLayerIds[i];
 
-                let link = document.createElement('a');
-                link.href = '#';
-                link.className = 'active';
-                link.textContent = id;
 
-                link.onclick = function (e) {
-                    let clickedLayer = this.textContent;
-console.log('layer clicked: ' + clickedLayer)
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    let visibility = this.mapboxgl.getLayoutProperty(clickedLayer, 'visibility');
-
-                    if (visibility === 'visible') {
-                        this.mapboxgl.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                        this.className = '';
-                    } else {
-                        this.className = 'active';
-                        this.mapboxgl.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                    }
-                };
-
-                let layers = document.getElementById('menu');
-                layers.appendChild(link);
-            }
         },
+        methods: {
+            onMapLoaded(event) {
+                this.map = event.map;
+                let test = this.map;
 
+                let toggleableLayerIds = [ 'bg', 'statesBorder',  'citiesDot'];
+
+                for (let i = 0; i < toggleableLayerIds.length; i++) {
+                    let id = toggleableLayerIds[i];
+
+                    let link = document.createElement('a');
+                    link.href = '#';
+                    link.className = 'active';
+                    link.textContent = id;
+
+                    link.onclick = function (e) {
+                        let clickedLayer = this.textContent;
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        let visibility = test.getLayoutProperty(clickedLayer, 'visibility');
+
+                        if (visibility === 'visible') {
+                            test.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                            this.className = '';
+                        } else {
+                            this.className = 'active';
+                            test.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                        }
+                    };
+
+                    let layers = document.getElementById('menu');
+                    layers.appendChild(link);
+                }
+            }
+        }
     }
 </script>
 
