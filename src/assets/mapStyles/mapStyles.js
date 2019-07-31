@@ -9,6 +9,11 @@ export default {
             HRU: {
                 type: "vector",
                 url: "http://localhost:8085/data/new2.json"
+                // amazon S3 "tiles": ["http://wbeep-test-website.s3-website-us-west-2.amazonaws.com/tiles/{z}/{x}/{y}.pbf"],
+                // locally, you can run tileserver https://www.npmjs.com/package/tileserver-gl-light
+                // host the tiles in the /tiles dir with tileserver-gl-light /path/to/repo/tiles/new2.mbtiles -p 8085
+                // then change the line above to have the map look for local tileserver instead of s3 path
+                // url: 'http://127.0.0.1:8085/data/new2.json'
             }
         },
         "sprite": "",

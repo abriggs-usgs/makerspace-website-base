@@ -86,7 +86,7 @@
                     }
                 }
 
-                // Go through each layer id in array and make a button element for it
+                // Go through each layer id that is in the array and make a button element for it
                 for (let i = 0; i < toggleableLayerIds.length; i++) {
                     let id = toggleableLayerIds[i];
 
