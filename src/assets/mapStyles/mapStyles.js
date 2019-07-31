@@ -15,7 +15,7 @@ export default {
         "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
         "layers": [
             {
-                "id": "bg",
+                "id": "Background",
                 "type": "background",
                 "layout": {
                     "visibility": "visible"
@@ -25,7 +25,7 @@ export default {
                 }
             },
             {
-                "id": "states",
+                "id": "State Color Fill",
                 "type": "fill",
                 "source": "basemap",
                 "source-layer": "states",
@@ -37,7 +37,7 @@ export default {
                 }
             },
             {
-                "id": "neighbors",
+                "id": "Neighboring Countries",
                 "type": "fill",
                 "source": "basemap",
                 "source-layer": "neighboringcountry",
@@ -49,7 +49,7 @@ export default {
                 }
             },
             {
-                id: "HRUS2",
+                id: "HRUS Fill Colors",
                 type: "fill",
                 source: "HRU",
                 "source-layer": "no_simp_prec5",
@@ -74,7 +74,7 @@ export default {
             },
 
             {
-                id: "HRUS",
+                id: "HRUS Outlines",
                 type: "line",
                 source: "HRU",
                 "source-layer": "no_simp_prec5",
@@ -98,7 +98,7 @@ export default {
                 },
             },
             {
-                "id": "rivers",
+                "id": "Rivers",
                 "type": "line",
                 "source": "basemap",
                 "source-layer": "USA_Rivers_and_Streams",
@@ -111,7 +111,7 @@ export default {
                 }
             },
             {
-                "id": "counties",
+                "id": "Counties Borders",
                 "type": "line",
                 "source": "basemap",
                 "source-layer": "counties",
@@ -125,7 +125,7 @@ export default {
                 }
             },
             {
-                "id": "statesBorder",
+                "id": "State Borders",
                 "type": "line",
                 "source": "basemap",
                 "source-layer": "states",
@@ -141,7 +141,7 @@ export default {
                 }
             },
             {
-                "id": "citiesDot",
+                "id": "Cities Dots",
                 "type": "circle",
                 "source": "basemap",
                 "source-layer": "Cities_and_Towns_NTAD",
@@ -154,7 +154,7 @@ export default {
                 }
             },
             {
-                "id": "cities",
+                "id": "Cities Names",
                 "type": "symbol",
                 "source": "basemap",
                 "source-layer": "Cities_and_Towns_NTAD",

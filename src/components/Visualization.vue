@@ -72,42 +72,49 @@
                 center: [-95.7129, 37.0902]
             }
         },
-        created() {
-
-
-
-        },
         methods: {
             onMapLoaded(event) {
-                this.map = event.map;
-                let test = this.map;
+                let map = event.map; // This gives us access to the map as an object
 
-                let toggleableLayerIds = [ 'bg', 'statesBorder',  'citiesDot'];
+                // Next section gives us names for the layer toggle buttons
+                let styleLayers = Object.values(mapStyles.style.layers); // Pulls the layers out of the styles object as an array
+                let toggleableLayerIds = []; // gives us a blank array for the layer ids
+                // Gets the ids of each layer
+                for (let index = 0; index < styleLayers.length; index++) {
+                    toggleableLayerIds.push(styleLayers[index].id)
+                }
 
+                // Go through each layer id in array and make a button element for it
                 for (let i = 0; i < toggleableLayerIds.length; i++) {
                     let id = toggleableLayerIds[i];
 
-                    let link = document.createElement('a');
+                    let link = document.createElement('button');
                     link.href = '#';
                     link.className = 'active';
+                    link.className = 'usa-button--accent-cool';
                     link.textContent = id;
 
+                    // Creates a click event for each button so that when clicked by the user, the visibility property
+                    // is changed as is the class (color) of the button
                     link.onclick = function (e) {
                         let clickedLayer = this.textContent;
                         e.preventDefault();
                         e.stopPropagation();
 
-                        let visibility = test.getLayoutProperty(clickedLayer, 'visibility');
+                        let visibility = map.getLayoutProperty(clickedLayer, 'visibility');
 
                         if (visibility === 'visible') {
-                            test.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
                             this.className = '';
+                            this.className = 'usa-button--base';
                         } else {
                             this.className = 'active';
-                            test.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                            this.className = 'usa-button--accent-cool';
+                            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
                         }
                     };
 
+                    // Add the toggle layer buttons to the 'menu' element
                     let layers = document.getElementById('menu');
                     layers.appendChild(link);
                 }
@@ -124,11 +131,13 @@
     height: 900px;
   }
 
+  /* override USWDS style to prevent title from wrapping too soon */
   .title-text {
     margin-left: 1.5rem;
     padding-top: 0.5rem;
   }
 
+  /* make the line below the title snug up to the map */
   hr {
     margin: 2px 0 0 0;
     padding-bottom: 0;
