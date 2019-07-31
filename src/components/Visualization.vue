@@ -74,14 +74,16 @@
         },
         methods: {
             onMapLoaded(event) {
-                let map = event.map; // This gives us access to the map as an object
+                let map = event.map; // This gives us access to the map as an object but only after the map has loaded
 
                 // Next section gives us names for the layer toggle buttons
                 let styleLayers = Object.values(mapStyles.style.layers); // Pulls the layers out of the styles object as an array
                 let toggleableLayerIds = []; // gives us a blank array for the layer ids
                 // Gets the ids of each layer
                 for (let index = 0; index < styleLayers.length; index++) {
-                    toggleableLayerIds.push(styleLayers[index].id)
+                    if (styleLayers[index].showButton === true) { // note: to NOT show a layer, change the 'showButton' property in the mapStyles.js to false
+                      toggleableLayerIds.push(styleLayers[index].id)
+                    }
                 }
 
                 // Go through each layer id in array and make a button element for it
@@ -91,7 +93,7 @@
                     let link = document.createElement('button');
                     link.href = '#';
                     link.className = 'active';
-                    link.className = 'usa-button--accent-cool';
+                    link.className = 'usa-button--accent-cool'; // adds USWDS button style to element
                     link.textContent = id;
 
                     // Creates a click event for each button so that when clicked by the user, the visibility property
@@ -106,7 +108,7 @@
                         if (visibility === 'visible') {
                             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
                             this.className = '';
-                            this.className = 'usa-button--base';
+                            this.className = 'usa-button--base'; // adds USWDS button style to element
                         } else {
                             this.className = 'active';
                             this.className = 'usa-button--accent-cool';
@@ -137,7 +139,7 @@
     padding-top: 0.5rem;
   }
 
-  /* make the line below the title snug up to the map */
+  /* make the line below the title stay off the title but snug up to the map */
   hr {
     margin: 2px 0 0 0;
     padding-bottom: 0;

@@ -22,7 +22,8 @@ export default {
                 },
                 "paint": {
                     "background-color": "rgba(202, 210, 211, 1)"
-                }
+                },
+                "showButton": false
             },
             {
                 "id": "State Color Fill",
@@ -34,7 +35,8 @@ export default {
                 },
                 "paint": {
                     "fill-color": "rgba(246, 246, 244, 1)"
-                }
+                },
+                "showButton": true
             },
             {
                 "id": "Neighboring Countries",
@@ -46,7 +48,8 @@ export default {
                 },
                 "paint": {
                     "fill-color": "rgba(246, 246, 244, 1)"
-                }
+                },
+                "showButton": true
             },
             {
                 id: "HRUS Fill Colors",
@@ -70,7 +73,8 @@ export default {
                         ]
                     },
                     "fill-opacity": 1
-                }
+                },
+                "showButton": true
             },
 
             {
@@ -96,6 +100,7 @@ export default {
                     },
                     "line-width": 1
                 },
+                "showButton": true
             },
             {
                 "id": "Rivers",
@@ -108,7 +113,8 @@ export default {
                 },
                 "paint": {
                     "line-color": "rgba(115, 255, 255, 1)"
-                }
+                },
+                "showButton": true
             },
             {
                 "id": "Counties Borders",
@@ -122,7 +128,8 @@ export default {
                 },
                 "paint": {
                     "line-color": "rgba(115, 255, 255, 1)"
-                }
+                },
+                "showButton": true
             },
             {
                 "id": "State Borders",
@@ -138,7 +145,8 @@ export default {
                         2,
                         1.5
                     ]
-                }
+                },
+                "showButton": true
             },
             {
                 "id": "Cities Dots",
@@ -151,7 +159,8 @@ export default {
                 },
                 "paint": {
                     "circle-radius": 4
-                }
+                },
+                "showButton": true
             },
             {
                 "id": "Cities Names",
@@ -180,7 +189,8 @@ export default {
                     "text-halo-width": 1,
                     "text-halo-blur": 1,
                     "text-halo-color": "rgba(0, 0, 0, 0.5)",
-                }
+                },
+                "showButton": true
             }
         ]
     }
